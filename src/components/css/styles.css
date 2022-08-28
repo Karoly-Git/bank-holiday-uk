@@ -15,6 +15,10 @@ body {
   transition: all ease-out 250ms;
 }
 
+.body-dark {
+  background-color: black;
+}
+
 .d-App {
   padding: 2rem;
   display: flex;
@@ -25,6 +29,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
 .n-App {
   padding: 2rem;
   display: flex;
@@ -93,6 +98,7 @@ h1 {
 .d-ol {
   max-width: 50rem;
 }
+
 .n-ol {
   max-width: 50rem;
   color: grey;
@@ -112,6 +118,7 @@ li {
   font-weight: 900;
   width: 22rem;
 }
+
 .date,
 .day {
   font-size: 2rem;
@@ -124,12 +131,12 @@ li {
     flex-direction: row;
     align-items: center;
   }
-  
+
   .year-selector {
     margin-left: 1.5rem;
     margin-top: 0;
   }
-  
+
   .selector-container {
     flex-direction: row;
   }

@@ -3,7 +3,7 @@ import BankHoliday from "./components/bankHoliday";
 
 export default function App(props) {
   const [appClass, setAppClass] = useState('d-App');
-  const [title, setTitle] = useState('Bank Holidays')
+  const [title, setTitle] = useState('Bank Holidays UK')
 
   return (
     <div className={appClass}>
