@@ -128,7 +128,7 @@ export default function BankHoliday(props) {
                 <select onChange={handleYearChange} className="year-selector">
                     {yearItems}
                 </select>
-                <NightSwitch />
+                {false && <NightSwitch />}
             </div>
             <ol>{holidayItems}</ol>
             <div>{props.name}</div>
