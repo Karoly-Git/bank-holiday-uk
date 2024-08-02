@@ -14,7 +14,7 @@ export default function BankHoliday(props) {
     const [regions, setRegions] = useState([
         "england-and-wales",
         "scotland",
-        "northern-ireland"
+        "northern-ireland",
     ]);
     const [years, setYears] = useState([
         "2017",
@@ -23,7 +23,8 @@ export default function BankHoliday(props) {
         "2020",
         "2021",
         "2022",
-        "2023"
+        "2023",
+        "2024",
     ]);
     const dayNames = [
         "Sunday",
@@ -32,7 +33,7 @@ export default function BankHoliday(props) {
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday"
+        "Saturday",
     ];
 
     useEffect(() => {
@@ -58,12 +59,12 @@ export default function BankHoliday(props) {
                     month: event.date.split("-")[1],
                     day: event.date.split("-")[2],
                     dayName: new Date(event.date).getDay(),
-                    key: event.date + region
+                    key: event.date + region,
                 };
                 setAllHolidays((oldList) => [...oldList, newBankHoliday]);
             }
         }
-    }
+    };
 
     const makeItNice = (nice) => {
         return nice
@@ -74,14 +75,14 @@ export default function BankHoliday(props) {
                     : string
             )
             .join(" ");
-    }
+    };
 
     const makeItUgly = (ugly) => {
         return ugly
             .split(" ")
             .map((string) => string.toLowerCase())
             .join("-");
-    }
+    };
 
     const holidayItems = allHolidays
         .filter((x) => x.region === selectedRegion)
@@ -113,16 +114,19 @@ export default function BankHoliday(props) {
 
     const handleRegionChange = (e) => {
         setSelectedRegion((old) => makeItUgly(e.target.value));
-    }
+    };
 
     const handleYearChange = (e) => {
         setSelectedYear((old) => e.target.value);
-    }
+    };
 
     return (
         <>
             <div className="selector-container">
-                <select onChange={handleRegionChange} className="region-selector">
+                <select
+                    onChange={handleRegionChange}
+                    className="region-selector"
+                >
                     {regionItems}
                 </select>
                 <select onChange={handleYearChange} className="year-selector">
