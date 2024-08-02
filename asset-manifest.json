@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/bank-holiday-uk/static/css/main.b6b87dbe.css",
-    "main.js": "/bank-holiday-uk/static/js/main.338d5ba7.js",
+    "main.js": "/bank-holiday-uk/static/js/main.2896376b.js",
     "static/js/787.fc277e2e.chunk.js": "/bank-holiday-uk/static/js/787.fc277e2e.chunk.js",
     "static/media/moon.png": "/bank-holiday-uk/static/media/moon.40c8d0b3422b0644df89.png",
     "static/media/sun.png": "/bank-holiday-uk/static/media/sun.8e0bfc6c7ff071fc30e2.png",
     "index.html": "/bank-holiday-uk/index.html",
     "main.b6b87dbe.css.map": "/bank-holiday-uk/static/css/main.b6b87dbe.css.map",
-    "main.338d5ba7.js.map": "/bank-holiday-uk/static/js/main.338d5ba7.js.map",
+    "main.2896376b.js.map": "/bank-holiday-uk/static/js/main.2896376b.js.map",
     "787.fc277e2e.chunk.js.map": "/bank-holiday-uk/static/js/787.fc277e2e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b6b87dbe.css",
-    "static/js/main.338d5ba7.js"
+    "static/js/main.2896376b.js"
   ]
 }
