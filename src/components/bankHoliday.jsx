@@ -43,6 +43,7 @@ export default function BankHoliday(props) {
                 .then((resp) => resp.json())
                 .then((resp) => {
                     getAllHolidays(resp);
+                    console.log(resp);
                 });
         }
     });
