@@ -146,10 +146,29 @@ export default function App() {
 
     return (
         <div className="App">
-            <h1>Bank Holidays</h1>
-            <h2>United Kingdom</h2>
+            {/* Animate only on first load */}
+            <motion.h1
+                initial={{ opacity: 0, y: 20 }} // Initial state before the animation
+                animate={{ opacity: 1, y: 0 }} // Animate to this state
+                transition={{ duration: 0.5 }} // Animation duration
+            >
+                Bank Holidays
+            </motion.h1>
 
-            <div id="select-container">
+            <motion.h2
+                initial={{ opacity: 0, y: 20 }} // Initial state before the animation
+                animate={{ opacity: 1, y: 0 }} // Animate to this state
+                transition={{ duration: 0.5, delay: 0.1 }} // Animation duration with delay
+            >
+                United Kingdom
+            </motion.h2>
+
+            <motion.div
+                id="select-container"
+                initial={{ opacity: 0, y: 20 }} // Initial state before the animation
+                animate={{ opacity: 1, y: 0 }} // Animate to this state
+                transition={{ duration: 0.5, delay: 0.2 }} // Animation duration with delay
+            >
                 <div>
                     <label>Country:</label>
                     <CustomDropdown
@@ -172,7 +191,7 @@ export default function App() {
                         label="Select Year"
                     />
                 </div>
-            </div>
+            </motion.div>
 
             {/* Animated holiday container */}
             <motion.div
