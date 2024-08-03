@@ -1,32 +1,27 @@
 // src/App.js
 
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion"; // Importing motion from framer-motion
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 // The main component of the application
 export default function App() {
-    // List of countries with their respective values used for selection
     const countries = [
         { name: "England and Wales", value: "england-and-wales" },
         { name: "Scotland", value: "scotland" },
         { name: "Northern Ireland", value: "northern-ireland" },
     ];
 
-    // URL for fetching bank holiday data
     const url = "https://www.gov.uk/bank-holidays.json";
-
-    // Array containing the names of the days of the week
     const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    // State variables for storing fetched data, filtered events, available years, selected year, and selected country
     const [data, setData] = useState({});
     const [events, setEvents] = useState([]);
     const [years, setYears] = useState([]);
     const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
     const [selectedCountry, setSelectedCountry] = useState("england-and-wales");
 
-    // Function to fetch data from the specified URL
     const fetchData = async (url) => {
         try {
             const response = await fetch(url);
@@ -38,7 +33,6 @@ export default function App() {
         }
     };
 
-    // Function to extract and return an array of available years from the fetched data
     const getYears = (data) => {
         let years = [];
         try {
@@ -57,31 +51,26 @@ export default function App() {
         }
     };
 
-    // Handler for changing the selected country
     const handleCountryChange = (newCountry) => {
         setSelectedCountry(newCountry);
     };
 
-    // Handler for changing the selected year
     const handleYearChange = (newYear) => {
         setSelectedYear(newYear);
     };
 
-    // Effect to fetch data and set initial state on component mount
     useEffect(() => {
         const fetchAndSet = async () => {
             try {
                 const data = await fetchData(url);
                 setData(data);
 
-                // Filter events for the selected country and year
                 const newEvents = data[selectedCountry].events.filter(event =>
                     new Date(event.date).getFullYear() === selectedYear
                 );
 
                 setEvents(newEvents);
 
-                // Set available years from the fetched data
                 if (data) {
                     const yearsArray = getYears(data);
                     setYears(yearsArray);
@@ -92,12 +81,10 @@ export default function App() {
         };
 
         fetchAndSet();
-    }, []); // Empty dependency array ensures this effect runs only once
+    }, []);
 
-    // Effect to update events when selected country, year, or data changes
     useEffect(() => {
         if (data[selectedCountry]) {
-            // Filter events based on the selected country and year
             const newEvents = data[selectedCountry].events.filter(event =>
                 new Date(event.date).getFullYear() === selectedYear
             );
@@ -105,25 +92,20 @@ export default function App() {
         }
     }, [selectedCountry, selectedYear, data]);
 
-    // Function to find the index of the upcoming bank holiday
     const getUpcomingEventIndex = () => {
         const today = new Date();
-        // Check if the selected year is the current year
         if (selectedYear === today.getFullYear()) {
             for (let i = 0; i < events.length; i++) {
-                // Find the first event with a date greater than today
                 if (new Date(events[i].date) > today) {
                     return i;
                 }
             }
         }
-        return -1; // Return -1 if no upcoming event is found or if the selected year is not the current year
+        return -1;
     };
 
-    // Get the index of the upcoming bank holiday
     const upcomingEventIndex = getUpcomingEventIndex();
 
-    // CustomDropdown Component
     const CustomDropdown = ({ options, selectedValue, onChange, label }) => {
         const [isOpen, setIsOpen] = useState(false);
 
@@ -162,14 +144,12 @@ export default function App() {
         );
     };
 
-    // Render the component UI
     return (
         <div className="App">
             <h1>Bank Holidays</h1>
             <h2>United Kingdom</h2>
 
             <div id="select-container">
-                {/* Dropdown for selecting the country */}
                 <div>
                     <label>Country:</label>
                     <CustomDropdown
@@ -180,7 +160,6 @@ export default function App() {
                     />
                 </div>
 
-                {/* Dropdown for selecting the year */}
                 <div>
                     <label>Year:</label>
                     <CustomDropdown
@@ -195,8 +174,14 @@ export default function App() {
                 </div>
             </div>
 
-            {/* List of bank holidays */}
-            <div id="holiday-container">
+            {/* Animated holiday container */}
+            <motion.div
+                id="holiday-container"
+                key={`${selectedCountry}-${selectedYear}`} // Unique key to trigger re-render
+                initial={{ opacity: 0, y: 20 }} // Initial state before the animation
+                animate={{ opacity: 1, y: 0 }} // Animate to this state
+                transition={{ duration: 0.5 }} // Animation duration
+            >
                 <ul>
                     {events.map((event, index) => (
                         <li key={event.date} className={index === upcomingEventIndex ? 'upcoming' : ''}>
@@ -212,7 +197,7 @@ export default function App() {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </motion.div>
         </div>
     );
 }
