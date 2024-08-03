@@ -103,11 +103,12 @@ li:last-child {
   }
 
   #select-container div:first-child {
-    margin-bottom: 1rem;
+    margin-bottom: unset;
   }
 
-  #select-container div:nth-child(2) {
+  #select-container>div:nth-child(2) {
     margin-left: unset;
+    margin-bottom: 1rem;
   }
 
   li {
