@@ -147,76 +147,84 @@ export default function App() {
     return (
         <div className="App">
             {/* Animate only on first load */}
-            <motion.h1
-                initial={{ opacity: 0, y: 20 }} // Initial state before the animation
-                animate={{ opacity: 1, y: 0 }} // Animate to this state
-                transition={{ duration: 0.5 }} // Animation duration
-            >
-                Bank Holidays
-            </motion.h1>
+            <header>
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }} // Initial state before the animation
+                    animate={{ opacity: 1, y: 0 }} // Animate to this state
+                    transition={{ duration: 0.5 }} // Animation duration
+                >
+                    Bank Holidays
+                </motion.h1>
 
-            <motion.h2
-                initial={{ opacity: 0, y: 20 }} // Initial state before the animation
-                animate={{ opacity: 1, y: 0 }} // Animate to this state
-                transition={{ duration: 0.5, delay: 0.1 }} // Animation duration with delay
-            >
-                United Kingdom
-            </motion.h2>
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }} // Initial state before the animation
+                    animate={{ opacity: 1, y: 0 }} // Animate to this state
+                    transition={{ duration: 0.5, delay: 0.1 }} // Animation duration with delay
+                >
+                    United Kingdom
+                </motion.h2>
 
-            <motion.div
-                id="select-container"
-                initial={{ opacity: 0, y: 20 }} // Initial state before the animation
-                animate={{ opacity: 1, y: 0 }} // Animate to this state
-                transition={{ duration: 0.5, delay: 0.2 }} // Animation duration with delay
-            >
-                <div>
-                    <label>Country:</label>
-                    <CustomDropdown
-                        options={countries}
-                        selectedValue={selectedCountry}
-                        onChange={handleCountryChange}
-                        label="Select Country"
-                    />
-                </div>
+                <motion.div
+                    id="select-container"
+                    initial={{ opacity: 0, y: 20 }} // Initial state before the animation
+                    animate={{ opacity: 1, y: 0 }} // Animate to this state
+                    transition={{ duration: 0.5, delay: 0.2 }} // Animation duration with delay
+                >
+                    <div>
+                        <label>Country:</label>
+                        <CustomDropdown
+                            options={countries}
+                            selectedValue={selectedCountry}
+                            onChange={handleCountryChange}
+                            label="Select Country"
+                        />
+                    </div>
 
-                <div>
-                    <label>Year:</label>
-                    <CustomDropdown
-                        options={years.map((year) => ({
-                            name: year.toString(),
-                            value: year,
-                        }))}
-                        selectedValue={selectedYear}
-                        onChange={handleYearChange}
-                        label="Select Year"
-                    />
-                </div>
-            </motion.div>
+                    <div>
+                        <label>Year:</label>
+                        <CustomDropdown
+                            options={years.map((year) => ({
+                                name: year.toString(),
+                                value: year,
+                            }))}
+                            selectedValue={selectedYear}
+                            onChange={handleYearChange}
+                            label="Select Year"
+                        />
+                    </div>
+                </motion.div>
+            </header>
+
 
             {/* Animated holiday container */}
-            <motion.div
-                id="holiday-container"
-                key={`${selectedCountry}-${selectedYear}`} // Unique key to trigger re-render
-                initial={{ opacity: 0, y: 20 }} // Initial state before the animation
-                animate={{ opacity: 1, y: 0 }} // Animate to this state
-                transition={{ duration: 0.5 }} // Animation duration
-            >
-                <ul>
-                    {events.map((event, index) => (
-                        <li key={event.date} className={index === upcomingEventIndex ? 'upcoming' : ''}>
-                            <div className="event-name">{event.title}</div>
-                            <div className="event-date">{
-                                new Date(event.date).toLocaleDateString('en-GB', {
-                                    day: '2-digit',
-                                    month: '2-digit',
-                                    year: 'numeric',
-                                })
-                            }</div>
-                            <div className="event-day">{`${dayNames[new Date(event.date).getDay()]}`}</div>
-                        </li>
-                    ))}
-                </ul>
-            </motion.div>
+            <main>
+
+                <motion.div
+                    id="holiday-container"
+                    key={`${selectedCountry}-${selectedYear}`} // Unique key to trigger re-render
+                    initial={{ opacity: 0, y: 20 }} // Initial state before the animation
+                    animate={{ opacity: 1, y: 0 }} // Animate to this state
+                    transition={{ duration: 0.5 }} // Animation duration
+                >
+                    <ul>
+                        {events.map((event, index) => (
+                            <li key={event.date} className={index === upcomingEventIndex ? 'upcoming' : ''}>
+                                <div className="event-name">{event.title}</div>
+                                <div className="event-date">{
+                                    new Date(event.date).toLocaleDateString('en-GB', {
+                                        day: '2-digit',
+                                        month: '2-digit',
+                                        year: 'numeric',
+                                    })
+                                }</div>
+                                <div className="event-day">{`${dayNames[new Date(event.date).getDay()]}`}</div>
+                            </li>
+                        ))}
+                    </ul>
+                </motion.div>
+            </main>
+
+            <footer>Created by <a href="https://karolyhornyak.co.uk/" target="_blank" rel="noopener noreferrer">Karoly Hornyak</a></footer>
         </div>
     );
 }

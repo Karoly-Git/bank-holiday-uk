@@ -7,29 +7,34 @@
 }
 
 .upcoming {
-  background-color: darkgreen;
+  background-color: #0077b6;
 }
 
 .upcoming * {
   color: white !important;
 }
 
+header,
+main {
+  padding: 1rem;
+}
+
 .App {
   width: 90%;
-  margin: 2rem auto;
+  margin: 1rem auto 0;
   max-width: 550px;
 }
 
 h1 {
   font-size: 2rem;
-  margin-bottom: 15px;
+  margin-bottom: 0.5rem;
   color: #0077b6;
   text-align: center;
 }
 
 h2 {
   font-size: 1.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   color: #0077b6;
   text-align: center;
 }
@@ -37,8 +42,6 @@ h2 {
 #select-container {
   display: flex;
   gap: 2rem;
-  /* Add gap for spacing between flex items */
-  margin-bottom: 20px;
 }
 
 #select-container div {
@@ -49,13 +52,19 @@ h2 {
 label {
   margin-bottom: 0.5rem;
   font-weight: bold;
+  color: #555;
+}
+
+.btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 1.15rem;
 }
 
 #holiday-container {
   width: 100%;
   background-color: #fff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
 ul {
@@ -67,10 +76,11 @@ ul {
 }
 
 li {
-  padding: 15px;
+  padding: 1rem;
   border-bottom: 1px solid #e0e0e0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   transition: background-color 0.3s ease;
 }
 
@@ -80,7 +90,7 @@ li:last-child {
 
 .event-name {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: #555;
   width: 200px;
 }
@@ -91,10 +101,22 @@ li:last-child {
   font-size: 0.9rem;
   width: 80px;
   text-align: right;
-  margin-left: 20px;
+  margin-left: 1.25rem;
+}
+
+footer {
+  padding: 0 1rem 1rem 1rem;
+  color: #555;
 }
 
 @media (max-width: 480px) {
+  main {
+    padding: 0 0 1rem;
+  }
+
+  .App {
+    width: 100%;
+  }
 
   #select-container {
     flex-direction: column;
@@ -114,6 +136,8 @@ li:last-child {
   li {
     flex-direction: column;
     justify-content: flex-start;
+    padding: 1rem 2rem;
+    padding: 0;
   }
 
   li div {
@@ -125,5 +149,6 @@ li:last-child {
   .event-day {
     width: unset;
     margin: unset;
+    text-align: center;
   }
 }
