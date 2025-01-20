@@ -234,7 +234,7 @@ export default function App() {
                     </motion.div>
                 </main>
 
-                <footer>Created by <a href="https://karolyhornyak.co.uk/" target="_blank" rel="noopener noreferrer">Karoly Hornyak</a></footer>
+                <footer>Made by <a href="https://karolyhornyak.co.uk/" target="_blank" rel="noopener noreferrer">Karoly Hornyak</a></footer>
             </div>
     );
 }
